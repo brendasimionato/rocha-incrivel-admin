@@ -38,12 +38,40 @@ export default function ListCards() {
         axios.put(url, {
             status: status
         }).then((resp) => {
+            createAudit(cardId, status)
             setAlertShowStatus(false)
             listCards()
         }).catch((error) => {
             alert("Erro ao atualizar o status do cartão")
         })
     }
+
+    const createAudit = (cardId, status) => {
+        const url = `${BASE_URL}/audits`
+        const body = {
+            "createdAt": new Date(Date.now()),
+            "type": "card-status-change",
+            "before": {
+                "id": cardId,
+                "status": "requested",
+                "user_id": localStorage.getItem("user_id")
+            },
+            "after": {
+                "id": cardId,
+                "status": status,
+                "user_id": localStorage.getItem("user_id")
+            }
+        }
+
+        axios.post(url, body, {
+
+        }).then((resp) => {
+
+        }).catch((error) => {
+            alert('Não foi possível criar uma auditoria');
+        });
+    };
+
 
     useEffect(() => {
         listCards()

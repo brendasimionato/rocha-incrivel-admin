@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { Table } from "react-bootstrap"
 import styled from "styled-components"
+import { BASE_URL } from "../../constants/url"
+
 
 
 const Container = styled.div`
@@ -15,7 +17,7 @@ export default function ListAudits() {
 
 
     const listAudits = () => {
-        const url = "http://localhost:3001/api/audits"
+        const url = `${BASE_URL}/audits`
 
         axios.get(url, {
         }).then((resp) => {
