@@ -3,27 +3,45 @@ import ListCards from "./card/ListCards";
 import ListUsers from "./user/ListUsers";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import HomePage from "./HomePage";
+import Login from "./analyst/Login";
+import Menu from "./Menu";
+import ListFeatures from "./features/ListFeatures";
 
 
 
 export default function Routers() {
+
     return (
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path={"/"}>
-                       <HomePage/>
-                    </Route>
-                    <Route exact path={"/audit"}>
-                        <ListAudits/>
-                    </Route>
-                    <Route exact path={"/cards"}>
-                        <ListCards/>
-                    </Route>
-                    <Route exact path={"/users"}>
-                        <ListUsers/>
-                    </Route>
-                </Switch>
-            </BrowserRouter>
+
+        <BrowserRouter>
+
+            <Switch>
+                <Route exact path={"/"}>
+                    <Login />
+                </Route>
+                <Route exact path={"/home"}>
+                    <Menu />
+                    <HomePage />
+                </Route>
+                <Route exact path={"/audit"}>
+                    <Menu />
+                    <ListAudits />
+                </Route>
+                <Route exact path={"/cards"}>
+                    <Menu />
+                    <ListCards />
+                </Route>
+                <Route exact path={"/users"}>
+                    <Menu />
+                    <ListUsers />
+                </Route>
+                <Route exact path={"/features"}>
+                    <Menu />
+                    <ListFeatures />
+                </Route>
+            </Switch>
+
+        </BrowserRouter>
 
     )
 }
