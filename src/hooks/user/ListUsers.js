@@ -26,6 +26,21 @@ export default function ListUsers() {
         })
     }
 
+    // const hasRoleViewSalary = () => {
+    //     const rolesAnalyst = localStorage.getItem("roles").split(",")
+        
+    //     const roles = rolesAnalyst.find((r) => {
+    //         if (r == role) return r
+    //     })
+
+    //     if (roles != undefined && roles.length > 0) {
+    //         return true
+    //     } else {
+    //         return false
+    //     }
+    // }
+    
+
     useEffect(() => {
         listUsers()
     }, [])
@@ -42,7 +57,7 @@ export default function ListUsers() {
                     <tr>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Documento</th>
+                        <th>Documento</th> 
                         <th>Salário Base</th>
                     </tr>
                 </thead>
