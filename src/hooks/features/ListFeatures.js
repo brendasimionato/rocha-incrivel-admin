@@ -28,7 +28,7 @@ export default function ListFeatures() {
 
     return (
 
-        <Container>
+        <Container >
             <div>
                 <h5><b>Recursos disponíveis</b></h5>
             </div>

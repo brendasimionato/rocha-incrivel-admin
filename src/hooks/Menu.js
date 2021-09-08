@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { useHistory } from 'react-router'
 
 
@@ -6,26 +6,26 @@ export default function Menu() {
 
     const history = useHistory()
 
-    const goToAudits = () => {
-        history.push("/audit")
-    }
-
-    const goToCards = () => {
-        history.push("/cards")
-    }
-
-    const goToUsers = () => {
-        history.push("/users")
-    }
-
-    const goToFeatures = () => {
-        history.push("/features")
-    }
-
     const goToLogout = () => {
         localStorage.clear()
         history.push("/")
     }
+
+    const goToPage = (page, role) => {
+        const rolesAnalyst = localStorage.getItem("roles").split(",")
+        
+        const roles = rolesAnalyst.find((r) => {
+            if (r == role) return r
+        })
+
+        if (roles != undefined && roles.length > 0) {
+            window.location.href = page
+        } else {
+            alert('Você não tem permissão para acessar essa página.')
+        }
+
+    }
+
 
     return (
         <Navbar bg="light" expand="lg" sticky="left">
@@ -34,8 +34,8 @@ export default function Menu() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href={"/audit"}>Auditorias</Nav.Link>
-                        <Nav.Link href={"/cards"}>Cartões</Nav.Link>
+                        <Nav.Link onClick={() => goToPage('/audit', 'n2')}>Auditorias</Nav.Link>
+                        <Nav.Link onClick={() => goToPage('/cards', 'n1')}>Cartões</Nav.Link>
                         <Nav.Link href={"/features"}>Recursos</Nav.Link>
                         <Nav.Link href={"/users"}>Usuários</Nav.Link>
                     </Nav>
