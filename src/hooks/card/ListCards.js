@@ -72,6 +72,21 @@ export default function ListCards() {
         });
     };
 
+    const hasRoleViewLimit = (role) => {
+        const rolesAnalyst = localStorage.getItem("roles").split(",")
+
+        const roles = rolesAnalyst.find((r) => {
+            if (r == role) return r
+        })
+
+        if (roles != undefined && roles.length > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+
 
     useEffect(() => {
         listCards()
@@ -81,12 +96,12 @@ export default function ListCards() {
     return (
 
         <Container>
-            <Alert show={alertShowStatus} variant="secondary">
+            <Alert show={alertShowStatus} variant="secondary" p class="text-center">
                 <p>
                     Tem certeza que deseja alterar realizar esta alteração?
                 </p>
                 <hr />
-                <div className="d-flex justify-content-end">
+                <div className="d-flex justify-content-end" p class="text-center">
                     <Button onClick={() => changeCardStatus(cardIdToUpdated, cardStatusToUpdated)} variant="outline-success">
                         Sim
                     </Button>
@@ -96,28 +111,30 @@ export default function ListCards() {
                 </div>
             </Alert>
             <div>
-                <h5><b>Cartões disponíveis</b></h5>
+                <h5 p class="text-center"><b>Cartões Disponíveis</b></h5>
             </div>
 
             <Table striped bordered hover>
                 <thead>
-                    <tr>
+                    <tr p class="text-center">
                         <th>Nome</th>
                         <th>Digitos</th>
-                        <th>Limite</th>
+                        {(hasRoleViewLimit('n2')) ? <th>Limite</th> : null}
+
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     {cards.map((card) => {
                         return (
-                            <tr>
+                            <tr p class="text-center">
                                 <td>{card.metadatas.name}</td>
                                 <td>{card.metadatas.digits}</td>
-                                <td>{card.metadatas.limit}</td>
+                                {(hasRoleViewLimit('n2')) ? <td>{card.metadatas.limit}</td> : null}
                                 <td>
                                     <Button onClick={() => confirmChangeStatus(card.id, 'approved')} variant="success">Aprovar</Button>&nbsp;
-                                    <Button onClick={() => confirmChangeStatus(card.id, 'rejected')} variant="danger">Rejeitar</Button>
+                                    {(hasRoleViewLimit('n2')) ? <Button onClick={() => confirmChangeStatus(card.id, 'rejected')} variant="danger">Rejeitar</Button> : null}
+
                                 </td>
                             </tr>
                         )

@@ -53,18 +53,18 @@ export default function Login() {
 
 
     return (
-        <Container>
-            <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>E-mail</Form.Label>
+        <Container  class="col-md-4">
+            <Form class="col-md-4">
+                <Form.Group class="col-md-4" controlId="formBasicEmail">
+                    <Form.Label p class="text-center" >E-mail</Form.Label>
                     <Form.Control type="email" placeholder="Digite seu e-mail" onChange={onChangeEmail} />
-                    <Form.Text className="text-muted">
+                    <Form.Text  className="text-muted">
                         Não compartilharemos seu e-mail com mais ninguém.
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Senha</Form.Label>
+                <Form.Group class="col-md-4" controlId="formBasicPassword">
+                    <Form.Label class="col-md-4">Senha</Form.Label>
                     <Form.Control type="password" placeholder="Digite sua senha" onChange={onChangePassword} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">

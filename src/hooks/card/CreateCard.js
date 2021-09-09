@@ -68,20 +68,13 @@ export default function CreateCard() {
         }).catch((error) => {
             alert("Erro ao exibir usuários!")
         })
-        // get api users
-        // filter para users que podem ter cartao
-        // retornar
     }
-
-    // useEffect(() => {
-    //     getUsersEnabledCards()
-    // }, [])
 
 
     return (
         <Container>
             <div>
-                <h5><b>Criar novo cartão</b></h5>
+                <h5><b>Criar novo Cartão</b></h5>
             </div>
             <Typeahead
                 id="basic-example"

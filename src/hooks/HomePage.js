@@ -50,31 +50,24 @@ export default function HomePage() {
     }, [])
 
     return (
-        <Container class="d-inline-flex p-2 bd-highlight">
-            <Card style={{ width: '18rem' }}>
+        <Container align="center" class="d-inline-flex p-2 bd-highlight">
+            <Card align="center" style={{ width: '18rem' }}>
                 <Card.Body >
-                    <Card.Title class="text-center">Cartões pendentes</Card.Title>
-                    <Card.Text class="text-center">
-                        Nossos cartões.
-                        <p></p>
-
+                    <Card.Title class="row d-flex justify-content-center"><b>Cartões Pendentes</b></Card.Title>
+                    <p></p>
                         <Button variant="info" onClick={goToCards} className="me-2">
                             {countUsers}
                         </Button>
-                    </Card.Text>
                 </Card.Body>
             </Card>
 
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title class="text-center" >Usuários</Card.Title>
-                    <Card.Text class="text-center">
-                        Atuais clientes.
+            <Card  align="center" style={{ width: '18rem' }}>
+                <Card.Body align="center">
+                    <Card.Title class="text-center"><b>Atuais Usuários</b></Card.Title>
                         <p></p>
                         <Button variant="info" onClick={goToUsers} className="me-2">
                             {countCards}
                         </Button>
-                    </Card.Text>
                 </Card.Body>
             </Card>
 
