@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { Table } from "react-bootstrap"
+import { Table, p} from "react-bootstrap"
 import styled from "styled-components"
 
 
@@ -26,49 +26,49 @@ export default function ListUsers() {
         })
     }
 
-    // const hasRoleViewSalary = () => {
-    //     const rolesAnalyst = localStorage.getItem("roles").split(",")
-        
-    //     const roles = rolesAnalyst.find((r) => {
-    //         if (r == role) return r
-    //     })
+    const hasRoleViewSalary = (role) => {
+        const rolesAnalyst = localStorage.getItem("roles").split(",")
 
-    //     if (roles != undefined && roles.length > 0) {
-    //         return true
-    //     } else {
-    //         return false
-    //     }
-    // }
-    
+        const roles = rolesAnalyst.find((r) => {
+            if (r == role) return r
+        })
+
+        if (roles != undefined && roles.length > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 
     useEffect(() => {
         listUsers()
     }, [])
 
-    
+
     return (
         <Container>
             <div>
-                <h5><b>Lista de Usuários</b></h5>
+                <h5 p class="text-center"><b>Lista de Usuários</b></h5>
             </div>
 
             <Table striped bordered hover>
                 <thead>
-                    <tr>
+                    <tr p class="text-center">
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Documento</th> 
-                        <th>Salário Base</th>
+                        <th>Documento</th>
+                        {(hasRoleViewSalary('n2')) ? <th>Salário Base</th> : null}
                     </tr>
                 </thead>
                 <tbody>
                     {users.map((user) => {
                         return (
-                            <tr>
+                            <tr p class="text-center">
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.document}</td>
-                                <td>{user.salaryBase}</td>
+                                {(hasRoleViewSalary('n2')) ? <td>{user.salaryBase}</td> : null}
                             </tr>
                         )
                     })}

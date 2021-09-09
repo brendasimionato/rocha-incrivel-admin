@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { Table } from "react-bootstrap"
+import { Table, p } from "react-bootstrap"
 import styled from "styled-components"
 import { BASE_URL } from "../../constants/url"
 
@@ -36,22 +36,26 @@ export default function ListAudits() {
     return (
         <Container>
             <div>
-                <h5><b>Lista de Auditoria</b></h5>
+                <h5 p class="text-center"><b>Lista de Auditoria</b></h5>
             </div>
 
             <Table striped bordered hover>
                 <thead>
-                    <tr>
+                    <tr p class="text-center">
+                        <th>Nome</th>
                         <th>Tipo</th>
                         <th>Criado em</th>
+                        <th>Identificador</th>
                     </tr>
                 </thead>
                 <tbody>
                     {audits.map((audit) => {
                         return (
-                            <tr>
+                            <tr p class="text-center">
+                                <td>{audit.name}</td>
                                 <td>{audit.type}</td>
                                 <td>{audit.createdAt}</td>
+                                <td>{audit.requestedBy}</td>
                             </tr>
                         )
                     })}

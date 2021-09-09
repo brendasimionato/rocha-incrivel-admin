@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { BASE_URL } from "../../constants/url"
-import { Container, Table } from "react-bootstrap"
+import { Container, Table, p} from "react-bootstrap"
 
 
 
@@ -30,12 +30,12 @@ export default function ListFeatures() {
 
         <Container >
             <div>
-                <h5><b>Recursos disponíveis</b></h5>
+                <h5 p class="text-center"><b>Recursos Disponíveis</b></h5>
             </div>
 
             <Table striped bordered hover>
-                <thead>
-                    <tr>
+                <thead p class="text-center">
+                    <tr p class="text-center">
                         <th>Id</th>
                         <th>Nome</th>
                     </tr>
@@ -43,7 +43,7 @@ export default function ListFeatures() {
                 <tbody>
                     {features.map((feature) => {
                         return (
-                            <tr>
+                            <tr p class="text-center">
                                 <td>{feature.id}</td>
                                 <td>{feature.name}</td>
                             </tr>
